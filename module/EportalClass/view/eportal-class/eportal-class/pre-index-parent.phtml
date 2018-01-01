@@ -1,0 +1,24 @@
+<?php
+$property = $this->child->getProperty()->getName();
+$this->headTitle(ucwords($property));
+
+$parents = $this->parents;
+$model = [];
+foreach($parents as $parent){
+    $model[] = [
+        'parent_property_values' => $parent['property_values'],
+        'parent_property' => $parent['property'],
+        'property' => $this->child
+    ];
+}
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a href="<?php echo $this->url("zfcadmin/eportal-{$property}", ['action' => 'index']) ?>" class="btn btn-default" data-toggle="tooltip" title="Back" data-original-title="Back"><i class="fa fa-reply"></i></a>
+        </div>
+        <h1 class="text-capitalize"> <?php echo $property ?> <small><?php echo $this->child->getValue() ?></small></h1>
+    </div>
+</div>
+<?php
+echo $this->partialLoop('eportal-class/eportal-class/index-parent.phtml', $model);

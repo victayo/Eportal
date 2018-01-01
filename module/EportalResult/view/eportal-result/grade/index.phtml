@@ -1,0 +1,63 @@
+<?php
+$this->headTitle('Result - Grade');
+$grades = $this->grades;
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1 class="text-capitalize">Grade</h1>
+        <div class="pull-right text-capitalize">
+            <a href="<?php echo $this->url("zfcadmin/result/grade", ['action' => 'add']) ?>" class="btn btn-primary" data-toggle="tooltip" data-original-title="Add Grade">
+                <i class="fa fa-plus"></i>
+                Add Grade
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <i class="fa fa-list"></i> Grades
+            </h3>
+        </div>
+        <?php if (!count($grades)) { ?>
+        <div class="panel-body">
+            <div class="well">
+                <span class='text-warning'>No Grades Registered</span>
+            </div>
+        </div>
+<?php } else { ?>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Minimum Score</th>
+                        <th>Maximum Score</th>
+                        <th>Remark</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+    <?php foreach ($grades as $grade): ?>
+                        <tr>
+                            <td class="text-capitalize"><?php echo $this->escapeHtml($grade->getGrade()); ?></td>
+                            <td><?php echo $grade->getMin() ?></td>
+                            <td><?php echo $grade->getMax() ?></td>
+                            <td><?php echo $grade->getRemark(); ?></td>
+                            <td class="text-right">
+                                <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-original-title="edit" title="" 
+                                   href="<?php echo $this->url("zfcadmin/result/grade", ['action' => 'edit', 'id' => $grade->getId()]) ?>">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="delete" title=""
+                                   href="<?php echo $this->url("zfcadmin/result/grade", ['action' => 'delete', 'id' => $grade->getId()]) ?>">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+    <?php endforeach; ?>
+                </tbody>
+            </table>
+<?php } ?>
+    </div>
+</div>

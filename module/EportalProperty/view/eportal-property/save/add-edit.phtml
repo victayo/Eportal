@@ -1,0 +1,39 @@
+<?php
+$property = $this->property;
+$action = $this->action;
+$this->headTitle(ucwords($property).': '.ucwords($action));
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a href="<?php echo $this->url("zfcadmin/eportal-{$property}", ['action' => 'index']) ?>" class="btn btn-default" data-toggle="tooltip" title="Cancel" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
+        </div>
+        <h1> <span class="text-capitalize"><?php echo $action.' '.$property ?></span></h1>
+    </div>
+</div>
+<?php
+$form = $this->form;
+$fieldset = $form->getBaseFieldset();
+$submit = $form->get('submit')
+        ->setAttribute('value', ucwords($action));
+$form->setAttribute('class', 'form-horizontal');
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<div class="form-group">
+    <label for="value" class="control-label"><?php echo $this->escapeHtml(ucwords($this->property)); ?> Name</label>
+    <div>
+        <?php echo $this->formRowTwb($fieldset->get('value'), null, array('class' => 'form-control')) ?>
+    </div>
+</div>
+<div class="form-group">
+    <div>
+        <?php
+        echo $this->formSubmitTwb($form->get('submit'), 'button', array('class' => 'btn-sm btn-success'));
+        ?>
+    </div>
+</div>
+<?php
+echo $this->formHidden($fieldset->get('id'));
+echo $this->formHidden($form->get('csrf'));
+echo $this->form()->closeTag();

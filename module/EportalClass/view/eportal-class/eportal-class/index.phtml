@@ -1,0 +1,56 @@
+<?php
+$property_values = $this->property_values;
+$property = $this->escapeHtml($this->property);
+$this->headTitle(ucwords($property));
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1 class="text-capitalize"><?php echo $property ?></h1>
+        <div class="pull-right text-capitalize">
+            <a href="<?php echo $this->url("zfcadmin/eportal-{$property}", ['action' => 'add']) ?>" class="btn btn-primary" data-toggle="tooltip" data-original-title="Add New">
+                <i class="fa fa-plus"></i>
+                Add <?php echo $property ?>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <i class="fa fa-list"></i> List
+            </h3>
+        </div>
+        <!--<form>-->
+        <table class="table table-bordered table-hover">
+<!--            <thead>
+                <tr>
+                    <th class="text-center" style="width: 1px"><input type="checkbox" class="form-control" /></th>
+                    <th class="text-capitalize"><?php // echo $property  ?> List</th>
+                    <th class="text-left" style="width: 100px">Action</th>
+                </tr>
+            </thead>-->
+            <tbody>
+                <?php foreach ($property_values as $property_value): ?>
+                    <tr>
+                        <!--<td><input type="checkbox" name="selected[]" value="<?php // echo $property_value->getId()  ?>" class="form-control"/></td>-->
+                        <td class="text-capitalize">
+                            <?php echo $this->escapeHtml($property_value->getValue()); ?>
+                        </td>
+                        <td class="text-right">
+                            <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-original-title="edit" title="" 
+                               href="<?php echo $this->url("zfcadmin/eportal-{$property}", ['action' => 'edit'], ['query' => ['pid' => $property_value->getId()]]) ?>">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="delete" title=""
+                               href="<?php echo $this->url("zfcadmin/eportal-{$property}", ['action' => 'delete'], ['query' => ['pid' => $property_value->getId()]]) ?>">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <!--</form>-->
+    </div>
+</div>

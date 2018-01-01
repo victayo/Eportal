@@ -1,0 +1,16 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/angular/angular-route.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/ngDialog/ngDialog.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/userproperty/userproperty.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/PropertyService.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/PropertyController.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/userproperty/js/controllers.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/userproperty/js/services.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/userproperty/js/filters.js', 'text/javascript');
+$form = $this->form;
+$fieldset = $form->getBaseFieldset();
+?>
+<div ng-app="Eportal.UserProperty" ng-controller="SubjectUserController">
+<?php echo $this->partial('eportal-property/property.phtml', ['propertyFieldset' => $fieldset]); ?>
+</div>

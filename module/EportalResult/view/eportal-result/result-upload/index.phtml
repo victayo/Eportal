@@ -1,0 +1,18 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/angular/angular-route.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/PropertyService.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/PropertyController.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/directives.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/result/admin/js/services.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/result/admin/js/controllers.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/property.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/handsontable/dist/handsontable.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/handsontable/dist/handsontable.full.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/nghandsontable/dist/ngHandsontable.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/result/admin/result.js', 'text/javascript');
+$this->headLink()->appendStylesheet($this->basePath() . '/Eportal/lib/handsontable/dist/handsontable.full.css');
+?>
+<div ng-app="Eportal.Result">
+    <ng-view></ng-view>
+</div>

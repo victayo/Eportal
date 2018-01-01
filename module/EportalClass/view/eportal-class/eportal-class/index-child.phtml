@@ -1,0 +1,65 @@
+<?php
+$school = $this->school;
+$class = $this->class;
+$children = $this->children;
+$model = [];
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1><?php echo $class->getValue() ?></h1>
+        <ol class="breadcrumb text-capitalize">
+            <li>
+                <a href="<?php echo $this->url("zfcadmin/eportal-{$school->getProperty()->getName()}", ['action' => 'index']) ?>">
+                    School
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $this->url("zfcadmin/eportal-{$school->getProperty()->getName()}", ['action' => 'index'], ['query' => ['sid' => $school->getId()]]) ?>">
+                    <?php echo $school->getValue(); ?>
+                </a>
+            </li>
+            <li class="active"><?php echo $class->getValue() ?></li>
+        </ol>
+    </div>
+</div>
+<?php foreach ($children as $child) {
+    $childPropertyValues = $child['property_values'];
+    $childProperty = $child['property'];
+    ?>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3><i class="fa fa-list"></i><?php echo $childProperty->getName() ?></h3>
+            <a class="btn btn-primary pull-right" href="<?php echo $this->url("zfcadmin/eportal-{$class->getProperty()->getName()}", ['action' => 'add'], ['query' => ['sid' => $school->getId(), 'cid' => $class->getId(), 'property'=>$childProperty->getName()]]) ?>">
+                <i class="fa fa-plus"></i> Add <?php echo $childProperty->getName() ?> 
+            </a>
+        </div>
+        <?php if(!count($childPropertyValues)) { ?>
+        <div class="panel-body">
+            <div class="well">
+                No <?php echo $childProperty->getName(); ?> registered.
+            </div>
+        </div>
+        <?php }else{ ?>
+        <table class="table table-hover table-bordered">
+            <tbody>
+                <?php foreach ($childPropertyValues as $cpv) { ?>
+                    <tr>
+                        <td class="text-capitalize text-left">
+                            <a href="<?php echo $this->url("zfcadmin/eportal-{$cpv->getProperty()->getName()}",['action' => 'index'], ['query' => ['sid' => $school->getId(),'cid'=>$class->getId(), 'pid' => $cpv->getId()]]) ?>">
+                                <?php echo $cpv->getValue() ?>
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <a href="<?php echo $this->url("zfcadmin/eportal-{$class->getProperty()->getName()}", ['action' => 'delete'], ['query' => ['sid'=>$school->getId(),'cid' => $class->getId(), 'property' => $childProperty->getName()]]) ?>" class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <?php } ?>
+    </div>
+</div>
+<?php }

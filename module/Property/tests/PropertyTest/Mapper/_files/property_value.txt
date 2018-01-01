@@ -1,0 +1,46 @@
+1,senior secondary school
+1,junior secondary school
+1,primary
+1,nursery
+2,science
+2,art
+2,social science
+2,general
+3,jss 1
+3,jss 2
+3,jss 3
+3,sss 1
+3,sss 2
+3,sss 3
+3,nursery 1
+3,nursery 2
+3,nursery 3
+3,primary 1
+3,primary 2
+3,primary 3
+3,primary 4
+3,primary 5
+3,primary 6
+4,mathematics
+4,english
+4,introductory technology
+4,social studies
+4,physics
+4,chemistry
+4,biology
+4,literature in english
+4,government
+4,commercial science
+4,economics
+4,quantitative reasoning
+4,qualitative reasoning
+5,section a
+5,section b
+5,section c
+6,2013/2014
+6,2014/2015
+6,2015/2016
+6,2016/2017
+7,first
+7,second
+7,third

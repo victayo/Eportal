@@ -1,0 +1,27 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/result/general/js/services.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/result/general/js/controllers.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/handsontable/dist/handsontable.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/handsontable/dist/handsontable.full.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/nghandsontable/dist/ngHandsontable.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/result/general/result.js', 'text/javascript');
+$this->headLink()->appendStylesheet($this->basePath() . '/Eportal/lib/handsontable/dist/handsontable.full.css');
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1>Results</h1>
+    </div>
+</div>
+<div class='container-fluid' ng-app="Eportal.Result" ng-controller="ResultController">
+    <h3 class="text-capitalize">Result For {{term}} {{session}} Academic Session</h3>
+    <hot-table col-headers="true" datarows="data" height="300">
+        <hot-column
+            ng-repeat="column in columns" 
+            data="{{column.data}}" title="column.title" 
+            read-only="column.readOnly" 
+            type="column.type">
+        </hot-column>
+    </hot-table>
+    <br>
+</div>

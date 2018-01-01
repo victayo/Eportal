@@ -1,0 +1,28 @@
+<?php $user = $this->user; ?>
+<div>
+    <div>
+        <h3>Student Details</h3>
+    </div>
+    <div>
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <td>Name</td>
+            <td><?php echo $this->escapeHtml($this->user['fullname']); ?></td>
+        </tr>
+        <tr>
+            <td>School</td>
+            <td><?php echo $this->escapeHtml(ucwords($this->school->current()->getValue())); ?></td>
+        </tr>
+        <tr>
+            <td>Class</td>
+            <td><?php echo $this->escapeHtml(($this->class->current()->getValue())); ?></td>
+        </tr>
+            <?php if($this->department->current()): ?>
+        <tr>
+            <td>Department</td>
+            <td><?php echo $this->escapeHtml(ucwords($this->department->current()->getValue())); ?></td>
+        </tr>
+        <?php endif; ?>
+    </table>
+    </div>
+</div>

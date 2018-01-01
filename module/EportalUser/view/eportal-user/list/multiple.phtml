@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * 
+ * @param type $propertyName
+ * @param type $students
+ * @return boolean
+ * @todo Move to a helper class
+ */
+function checkPropertyExist($propertyName, $students) {
+    if (empty($students) || !$students) {
+        return false;
+    }
+    return array_key_exists($propertyName, $students[0]);
+}
+
+$has_school = checkPropertyExist('school', $this->students);
+$has_class = checkPropertyExist('class', $this->students);
+$has_department = checkPropertyExist('department', $this->students);
+$has_status = checkPropertyExist('status', $this->students);
+$has_section = checkPropertyExist('section', $this->students);
+?>
+<div>
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th>s/n</th>
+            <th>Name</th>
+            <th>Registration Number</th>
+            <?php if ($has_school): ?>
+                <th>School</th>
+            <?php endif; ?>
+            <?php if ($has_class): ?>
+                <th>Class</th>
+            <?php endif; ?>
+            <?php if ($this->has_section): ?>
+                <th>Section</th>
+            <?php endif; ?>
+            <?php if ($has_department): ?>
+                <th>Department</th>
+            <?php endif; ?>
+            <?php if ($has_status): ?>
+                <th>Status</th>
+        <?php endif; ?>
+        </tr>
+        <?php
+        $sn = 0;
+        foreach ($this->students as $student):
+            ?>
+            <tr>
+    <?php $url = $this->url('zfcadmin/user/student/view', array(), array('query' => array('id' => $student['reg_no'], 'session' => $this->session, 'term' => $this->term))) ?>
+                <td><?php echo ++$sn ?></td>
+                <td><a href="<?php echo $url; ?>"><?php echo $student['name']; ?></a></td>
+                <td><?php echo $student['reg_no']; ?></td>
+                <?php if ($has_school): ?><td><?php echo $this->escapeHtml($student['school']['value']); ?></td><?php endif; ?>
+                <?php if ($has_class): ?> <td><?php echo $student['class']['value']; ?></td><?php endif; ?>
+                <?php if ($this->has_section): ?>
+                    <td><?php echo $student['section']['value']; ?></td>
+                <?php endif; ?>
+                <?php if ($has_department): ?> <td><?php echo $student['department']['value']; ?></td><?php endif; ?>
+            <?php if ($has_status): ?><td><?php echo $student['status']; ?></td><?php endif; ?>
+            </tr>
+<?php endforeach; ?>
+    </table> 
+</div>

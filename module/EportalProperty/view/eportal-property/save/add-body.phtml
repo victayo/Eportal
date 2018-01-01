@@ -1,0 +1,30 @@
+<?php 
+$propertyValues = $this->property_values;
+$property = $this->property;
+$title = $this->title;
+?>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title text-capitalize">Select <?php echo $title ?></h3>
+        </div>
+        <div class="panel-body">
+            <?php if (count($propertyValues)) { ?>
+                <form method="post">
+                    <?php foreach ($propertyValues as $propertyValue): ?>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="child[<?php echo $propertyValue->getId() ?>]"> <?php echo $this->escapeHtml(ucwords($propertyValue->getValue())) ?>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            <?php }else { ?>
+            <div class="well">
+                <p>No available <?php echo $property ?></p>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>

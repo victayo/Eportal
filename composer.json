@@ -1,0 +1,17 @@
+{
+    "name": "zendframework/skeleton-application",
+    "description": "Skeleton Application for ZF2",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3.*",
+        "zf-commons/zfc-user": "=1.4.4",
+        "zf-commons/zfc-admin": "dev-master",
+        "bjyoungblood/bjy-authorize": "dev-master",
+        "dlu/dlutwbootstrap": "dev-master",
+        "phpoffice/phpexcel": "1.8.1",
+        "dino/dompdf-module": "dev-master"
+    },
+    "keywords": ["framework", "zf2"],
+    "license": "BSD-3-Clause",
+    "homepage": "http://framework.zend.com/"
+}

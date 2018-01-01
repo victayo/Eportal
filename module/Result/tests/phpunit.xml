@@ -1,0 +1,15 @@
+<phpunit bootstrap="./bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Result Test Suite">
+            <directory>./ResultTest</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <const name="DB_MYSQL_DSN" value="mysql:host=localhost;dbname=eportal_test" />
+        <const name="DB_MYSQL_USERNAME" value="root" />
+        <const name="DB_MYSQL_PASSWORD" value="" />
+        <const name="DB_MYSQL_RESULT_SCHEMA" value="C:/xampp/htdocs/Eportal/module/Result/data/result.schema.mysql.sql" />
+        <const name="DB_MYSQL_ASSESSMENT_SCHEMA" value="C:/xampp/htdocs/Eportal/module/Result/data/assessment.schema.mysql.sql" />
+        <const name="DB_MYSQL_RESULT_SCORE_SCHEMA" value="C:/xampp/htdocs/Eportal/module/Result/data/result_score.sql" />
+    </php>
+</phpunit>

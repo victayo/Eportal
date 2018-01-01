@@ -1,0 +1,11 @@
+<div class="row" ng-controller="UserController">
+    <div>
+        <div>
+            <button class="btn btn-sm btn-primary" ng-click="getUsers('student')"> View Students</button>
+            <button class="btn btn-sm btn-primary" ng-click="getUsers('teacher')"> View Teachers</button>
+        </div>
+    </div>
+    <div ng-show="view === true">
+        <ng-view></ng-view>
+    </div>
+</div>

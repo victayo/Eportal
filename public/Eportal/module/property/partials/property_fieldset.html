@@ -1,0 +1,85 @@
+<!--<div ng-controller="PropertyController">-->
+    <div class="form-group" ng-show="render.session">
+        <label for='property_session' class="control-label col-sm-2">Session</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name='session'
+                    id='property_session'
+                    ng-model='property.session'
+                    ng-options='session.id as session.value for session in collections.sessions track by session.id'
+                    ng-change='sessionChanged()'
+                    ng-required='render.session'>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="render.term">
+        <label for='property_term' class="control-label col-sm-2">Term</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name='term'
+                    id='property_term'
+                    ng-model='property.term'
+                    ng-options='term.id as term.value for term in collections.terms track by term.id'
+                    ng-change='termChanged()'
+                    ng-required='render.term'>
+                <option value="">--Select Term--</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="render.school">
+        <label for='property_school' class="control-label col-sm-2">School</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name='school'
+                    id='property_school'
+                    ng-model='property.school'
+                    ng-options='school.id as school.value for school in collections.schools track by school.id'
+                    ng-change='schoolChanged()'
+                    ng-required='render.school'>
+                <option value="">--Select School--</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="render.class">
+        <label for='property_class' class="control-label col-sm-2">Class</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name='class'
+                    id='property_class'
+                    ng-model='property.class'
+                    ng-options='class.id as class.value for class in collections.classes track by class.id'
+                    ng-change='classChanged()'
+                    ng-required='render.class'>
+                <option value="">--Select Class--</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show='hasDepartment && render.department'>
+        <label for='property_department' class="control-label col-sm-2">Department</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name='department'
+                    id='property_department'
+                    ng-model='property.department'
+                    ng-options='department.id as department.value for department in collections.departments track by department.id'
+                    ng-change='departmentChanged()'
+                    ng-required='hasDepartment && render.department'>
+                <option value="">--Select Department--</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" ng-show="hasSubject && render.subject">
+        <label for='property_subject' class="control-label col-sm-2">Subject</label>
+        <div class="col-sm-10">
+            <select class="form-control"
+                    name='subject'
+                    id='property_subject'
+                    ng-model='property.subject'
+                    ng-options='subject.id as subject.value for subject in collections.subjects track by subject.id'
+                    ng-change='subjectChanged()'
+                    ng-required='hasSubject && render.subject'>
+                <option value="">--Select Subject--</option>
+            </select>
+        </div>
+    </div>
+<!--</div>-->

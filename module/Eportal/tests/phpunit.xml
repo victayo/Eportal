@@ -1,0 +1,7 @@
+<phpunit bootstrap="./bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Eportal Test Suite">
+            <directory>./EportalTest</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

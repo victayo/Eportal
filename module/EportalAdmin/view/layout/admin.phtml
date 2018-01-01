@@ -1,0 +1,189 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/css/stylesheet.css')
+                ->prependStylesheet($this->basePath() . '/css/style.css')
+                ->prependStylesheet($this->basePath() . '/js/font-awesome/css/font-awesome.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/js/common.js')
+                ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/jquery.min.js')
+                ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <div id="container">
+            <!-- Header Start -->
+            <header id="header" class="navbar navbar-static-top">
+                <div class="container-fluid">
+                    <div id="header-logo" class="navbar-header">
+                        <a href="<?php echo $this->url('home') ?>" class="navbar-brand">
+                            <!--<img src="<?php // echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2" title="Zend Framework 2"/>-->
+                            <h1>Eportal</h1>
+                        </a>
+                    </div>
+                    <a href="#" id="button-menu" class="hidden-md hidden-lg"><span class="fa fa-bars"></span></a>    
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $this->basePath('img/profile-45x45.png') ?>" alt="John Doe" title="admin" id="user-profile" class="img-circle" />John Doe <i class="fa fa-caret-down fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#"><i class="fa fa-user-circle-o fa-fw"></i> Your Profile</a></li>
+                                <li role="separator" class="divider"></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-sign-in"></i> <span class="hidden-xs hidden-sm hidden-md">Login</span></a></li>
+                    </ul>
+                </div>
+            </header> 
+            <!-- Header End -->
+
+            <!-- Navigation Start -->
+            <nav id="column-left">
+                <div id="navigation">
+                    <span class="fa fa-bars"></span> Navigation
+                </div>
+                <ul id="menu">
+                    <li><a href="<?php echo $this->url('zfcadmin') ?>">
+                            <i class="fa fa-dashboard fw"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li> <!-- Users -->
+                        <a class="parent collapsed" href="#user" data-toggle="collapse">
+                            <i class="fa fa-user fw"></i>
+                            Users
+                        </a>
+                        <ul id="user" class="collapse">
+                            <li><a href="<?php echo $this->url('zfcadmin/user/register', ['user' => 'teacher']) ?>">Register Teacher</a></li>
+                            <li><a href="<?php echo $this->url('zfcadmin/user/register', ['user' => 'student']) ?>">Register Student</a></li>
+                        </ul>
+                    </li>
+                    <!-- End of Users -->
+                    <!-- Property -->
+                    <li>
+                        <a class="parent collapsed" href="#property" data-toggle="collapse">
+                            <i class="fa fa-television fw"></i>
+                            Property
+                        </a>
+                        <ul id="property" class="collapse">
+                            <li>
+                                <a class="parent collapsed" href="#view_property" data-toggle="collapse">View</a>
+                                <ul id="view_property" class="collapse">
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-school') ?>">School</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-class') ?>">Class</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-department') ?>">Department</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-subject') ?>">Subject</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-session') ?>">Session</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-term') ?>">Term</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="<?php echo $this->url('zfcadmin/eportal-school', ['action' => 'manage']) ?>">Manage School</a></li>
+                            <li><a href="<?php echo $this->url('zfcadmin/eportal-session', ['action' => 'manage']) ?>">Manage Session</a></li>
+                        </ul>
+                    </li><!-- end of property -->
+                    
+                    <li><!-- property user -->
+                        <a class="parent collapsed" href="#property_user" data-toggle="collapse">
+                            <i class="fa fa-tags fw"></i>
+                            Property User
+                        </a>
+                        <ul id="property_user" class="collapse">
+                            <li>
+                                <a class="parent collapsed" href="#manage_class" data-toggle="collapse">Manage Class</a>
+                                <ul id="manage_class" class="collapse">
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-class-user', ['user' => 'student']) ?>">Students</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-class-user', ['user' => 'teacher']) ?>">Teachers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="parent collapsed" href="#manage_subject" data-toggle="collapse"> Manage Subjects </a>
+                                <ul id="manage_subject" class="collapse">
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-subject-user', ['user' => 'student']) ?>">Students</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-subject-user', ['user' => 'teacher']) ?>">Teachers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="parent collapsed" href="#school" data-toggle="collapse">Manage School</a>
+                                <ul id="school" class="collapse">
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-school-user', ['user' => 'student']) ?>">Students</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-school-user', ['user' => 'teacher']) ?>">Teachers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="parent collapsed" href="#department" data-toggle="collapse">Manage Department</a>
+                                <ul id="department" class="collapse">
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-department-user', ['user' => 'student']) ?>">Students</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-department-user', ['user' => 'teacher']) ?>">Teachers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="parent collapsed" href="#session" data-toggle="collapse">Session and Term</a>
+                                <ul id="session" class="collapse">
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-session-user', ['user' => 'student']) ?>">Students</a></li>
+                                    <li><a href="<?php echo $this->url('zfcadmin/eportal-session-user', ['user' => 'teacher']) ?>">Teachers</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li><!-- end of property user -->
+                    <!-- result -->
+                    <li>
+                        <a class="parent collapsed" href="#result" data-toggle="collapse">
+                            <i class="fa fa-bar-chart-o fw"></i>
+                            Result
+                        </a>
+                        <ul id="result" class="collapse">
+                            <li>
+                                <a href="<?php echo $this->url('zfcadmin/result/upload') ?>">Upload/Edit Result</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->url('zfcadmin/result/assessment') ?>">Manage Assessments</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo $this->url('zfcadmin/result/grade') ?>">Manage Grades</a>
+                            </li>
+                        </ul>
+                    </li><!-- end of result -->
+                    <!-- setting -->
+                    <li>
+                        <a href="<?php echo $this->url('zfcadmin/setting') ?>">
+                            <i class="fa fa-cogs fw"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Navigation End -->
+
+
+            <!-- Content Starts-->
+            <div id="content">
+                <?php echo $this->content; ?>
+            </div>
+            <!-- Content End-->
+            <footer id="footer"></footer>
+        </div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!--<div ng-controller="UserRegisterController">-->
+<div>
+    <div class="form-group">
+        <label for="firstName" class="control-label col-sm-2">First Name</label>
+        <div class="col-sm-10">
+            <?php
+            $firstName = $userFieldset->get('first_name');
+            $firstName->setAttributes(array(
+                'ng-model' => 'user.first_name',
+                'ng-required' => 'true',
+                'ng-minlength' => 2
+            ));
+            echo $this->formTextNg($firstName, null, array('class' => 'form-control', 'id'=>'first_name'));
+            ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="last_name" class="control-label col-sm-2">Last Name(surname)</label>
+        <div class="col-sm-10">
+            <?php
+            $lastName = $userFieldset->get('last_name');
+            $lastName->setAttributes(array(
+                'ng-model' => 'user.last_name',
+                'ng-required' => 'true',
+                'ng-minlength' => 2
+            ));
+            echo $this->formTextNg($lastName, null, array('class' => 'form-control', 'id'=>'last_name'));
+            ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="middle_name" class="control-label col-sm-2">Middle Name</label>
+        <div class="col-sm-10">
+            <?php
+            $middleName = $userFieldset->get('middle_name');
+            $middleName->setAttributes(array(
+                'ng-model' => 'user.middle_name',
+                'ng-required' => 'true',
+                'ng-minlength' => 2
+            ));
+            echo $this->formTextNg($middleName, null, array('class' => 'form-control', 'id'=>'middle_name'));
+            ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="username" class="control-label col-sm-2">Registration Number</label>
+        <div class="col-sm-10">
+            <?php
+            $username = $userFieldset->get('username');
+            $username->setAttributes(array(
+                'ng-model' => 'user.username',
+                'ng-required' => 'true',
+                'ng-minlength' => 2
+            ));
+            echo $this->formTextNg($username, null, array('class' => 'form-control'));
+            ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="gender" class="control-label col-sm-2">Gender</label>
+        <div class="col-sm-10">
+            <?php
+            $gender = $userFieldset->get('gender');
+            $gender->setAttributes(array(
+                'ng-model' => 'user.gender',
+                'ng-required' => 'true',
+            ));
+            echo $this->formSelectNg($gender, null, array('class' => 'form-control', 'id'=>'gender'));
+            ?>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dob" class="control-label col-sm-2">Date of Birth</label>
+        <div class="col-sm-10">
+            <?php
+            $dob = $userFieldset->get('dob');
+            $dob->setAttributes(array(
+                'ng-model' => 'user.dob',
+                'ng-required' => 'true',
+                'placeholder' => 'yyyy-mm-dd'
+            ));
+            echo $this->formTextNg($dob, null, array('class' => 'form-control', 'id'=>'dob'));
+            ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/property.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/propertyservice.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/propertycontroller.js', 'text/javascript');
+$form = $this->form;
+$role = $this->role;
+$this->headTitle('Admin - View '.ucwords($role));
+$fieldset = $form->getBaseFieldset();
+$form->prepare();
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1>View <span class="text-capitalize"><?php echo $role ?></span></h1>
+    </div>
+</div>
+<div class="container-fluid" ng-app="Eportal.property">
+    <?php
+    echo $this->formTwb()->openTag($form, null, array('class' => 'form-horizontal', 'role' => 'form'));
+    echo $this->partial('eportal-property/property_form.phtml', ['propertyFieldset' => $fieldset]);
+    ?>
+    <div class="form-group">
+        <div class="col-sm-offset-2">
+        <?php $submit = $form->get('submit');
+        $submit->setAttributes(['ng-disabled' => 'form.$invalid']);
+        echo $this->formSubmitNg($submit, 'button', array('class' => 'btn-sm btn-success'));
+        ?>
+        </div>
+    </div>
+<?php echo $this->formTwb()->closeTag($form); ?>
+</div>

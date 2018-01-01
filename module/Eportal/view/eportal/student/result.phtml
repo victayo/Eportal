@@ -1,0 +1,25 @@
+<?php 
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/angular/angular-route.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/PropertyService.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/PropertyController.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/property.js', 'text/javascript');
+$form = $this->form;
+$fieldset = $form->getBaseFieldset();
+$form->prepare();
+?>
+<div class="container-fluid" ng-app="Eportal.property" ng-controller="PropertyController">
+
+    <?php
+    echo $this->formNg()->openTag($form, null, array('class' => 'form-horizontal'));
+    echo $this->partial('eportal-property/property_form.phtml', ['propertyFieldset' => $fieldset]);
+    $submit = $form->get('submit');
+    $submit->setAttributes(['ng-disabled' => 'form.$invalid']);
+    ?>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <?php echo $this->formSubmitNg($submit, 'button', array('class' => 'btn-sm btn-success')); ?>
+        </div>
+    </div>
+    <?php echo $this->formNg()->closeTag(); ?>
+</div>

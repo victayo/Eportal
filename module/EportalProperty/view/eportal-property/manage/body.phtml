@@ -1,0 +1,38 @@
+<?php
+$models = $this->view_data;
+foreach ($models as $model) {
+    $propertyValues = $model['property_values'];
+    ?>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-capitalize"><i class="fa fa-list"></i><?php echo $model['title'] ?></h3>
+                <a href="<?php echo $model['add_url'] ?>" class="btn btn-primary pull-right">
+                    <i class="fa fa-plus"></i> Add <span class="text-capitalize"><?php echo $model['title'] ?></span>
+                </a>
+            </div>
+            <?php if (!count($propertyValues)) { ?>
+                <div class="panel-body">
+                    <div class="well">
+                        No <?php echo $model['title'] ?> registered.
+                    </div>
+                </div>
+            <?php } else { ?>
+                <table class="table table-hover table-bordered">
+                    <tbody><?php foreach ($propertyValues as $pv) { ?>
+                            <tr>
+                                <?php if ($pv['url']) { ?>
+                                    <td class="text-left text-capitalize"><a href="<?php echo $pv['url'] ?>"><?php echo $pv['name'] ?></a></td>
+                                <?php } else { ?>
+                                    <td class="text-left text-capitalize"><?php echo $pv['name'] ?></td>
+                                <?php } ?>
+                                <td class="text-right"><a href="<?php echo $pv['delete_url'] ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            <?php } ?>
+        </div>
+    </div>
+    <?php
+} 

@@ -1,0 +1,16 @@
+<?php
+$title = $this->title;
+$breadcrumbs = $this->breadcrumbs;
+$active = $this->active;
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1><?php echo $title ?></h1>
+        <ol class="breadcrumb text-capitalize">
+            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+                <li><a href="<?php echo $breadcrumb['url'] ?>"><?php echo $breadcrumb['name'] ?></a></li>
+            <?php } ?>
+                <li class="active"><?php echo $active ?></li>
+        </ol>
+    </div>
+</div>

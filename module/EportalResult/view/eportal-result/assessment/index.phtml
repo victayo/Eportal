@@ -1,0 +1,65 @@
+<?php $this->headTitle('Result - Assessment');
+$assessments = $this->assessments; ?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1 class="text-capitalize">Assessment</h1>
+        <div class="pull-right text-capitalize">
+            <a href="<?php echo $this->url("zfcadmin/result/assessment", ['action' => 'add']) ?>" class="btn btn-primary" data-toggle="tooltip" data-original-title="Add Assessment">
+                <i class="fa fa-plus"></i>
+                Add Assessment
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <i class="fa fa-list"></i> Assessments
+            </h3>
+        </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Examination</th>
+                    <th>Include In Cumulative</th>
+                    <th>Max Score</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+<?php foreach ($assessments as $assessment): ?>
+                    <tr>
+                        <td class="text-capitalize">
+    <?php echo $this->escapeHtml($assessment->getName()); ?>
+                        </td>
+                        <td>
+                            <?php
+                            $exam = $assessment->getIsExam() ? 'Yes' : 'No';
+                            echo $exam
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            $inc = $assessment->getIncludeInCumulative() ? 'Yes' : 'No';
+                            echo $inc;
+                            ?>
+                        </td>
+                        <td><?php echo $assessment->getMaxScore(); ?></td>
+                        <td class="text-right">
+                            <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-original-title="edit" title="" 
+                               href="<?php echo $this->url("zfcadmin/result/assessment", ['action' => 'edit', 'id' => $assessment->getId()]) ?>">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="delete" title=""
+                               href="<?php echo $this->url("zfcadmin/result/assessment", ['action' => 'delete', 'id' => $assessment->getId()]) ?>">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+<?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

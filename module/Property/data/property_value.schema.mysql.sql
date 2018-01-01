@@ -1,0 +1,6 @@
+CREATE TABLE `property_value`
+(
+    `id`       INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `value`      VARCHAR(255) NOT NULL UNIQUE,
+    `property`    INT UNSIGNED NOT NULL
+) ENGINE=InnoDB CHARSET="utf8";

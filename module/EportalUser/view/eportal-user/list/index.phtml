@@ -1,0 +1,33 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/property.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/propertyservice.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/propertycontroller.js', 'text/javascript');
+$form = $this->form;
+$form->setAttribute('novalidate', 1);
+$fieldset = $form->get('eportal_property');
+$form->prepare();
+?>
+<div ng-app="Eportal.property">
+    <div class="page-header">
+        <h3>View Students</h3>
+    </div>
+    <?php
+    echo $this->formTwb()->openTag($form, null, array('class' => 'form-horizontal', 'role' => 'form'));
+    echo $this->partial('eportal-property/property.phtml', ['propertyFieldset' => $fieldset]);
+    ?>
+    <div class="form-group">
+        <div class="col-sm-offset-2">
+        <?php $submit = $form->get('submit');
+        echo $this->formSubmitNg($submit, 'button', array('class' => 'btn-sm btn-success'));
+        ?>
+        </div>
+    </div>
+<?php echo $this->formTwb()->closeTag($form); ?>
+<?php
+$users = $this->users;
+if($users){
+    echo $this->partial('eportal-user/list/users.phtml', ['users' => $users, 'session'=>$this->session, 'term'=>$this->term]);
+}
+?>
+</div>

@@ -1,0 +1,50 @@
+<?php
+$users = $this->users;
+$session = $this->session;
+$term = $this->term;
+$school = $this->school;
+$class = $this->class;
+$department = $this->department;
+$subject = $this->subject;
+$role = $this->role;
+$property = $this->property;
+
+$this->headTitle('Admin - View '.ucwords($role));
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1 class="text-capitalize text-justify">
+            Session: <?php echo $session->getValue() ?><br>
+            Term: <?php echo $term->getValue() ?> <br>
+            
+            <?php if($school){ ?>
+            School: <?php echo $school->getValue() ?><br>
+            <?php } ?>
+            
+            <?php if($class){?>
+            Class: <?php echo $class->getValue() ?>
+            <?php }?>
+            
+            <?php if($department){?>
+            Department: <?php echo $department->getValue() ?>
+            <?php }?>
+            
+            <?php if($subject){?>
+            Subject: <?php echo $subject->getValue() ?>
+            <?php }?>
+        </h1>
+        <?php if ($this->allow_add && !$this->allow_add_student) { ?>
+            <div class="pull-right text-capitalize">
+                <a class="btn btn-primary" 
+                   href="<?php echo $this->url("zfcadmin/eportal-{$property}-user", ['action' => 'add', 'user' => $role]) ?>"
+                   data-toggle="tooltip" 
+                   data-original-title="Add New">
+                    <i class="fa fa-plus"></i>
+                    Add <?php echo $role ?>
+                </a>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<?php
+echo $this->partial('eportal-user/list/users.phtml', ['users' => $users, 'session' => $session->getId(), 'term' => $term->getId()]);

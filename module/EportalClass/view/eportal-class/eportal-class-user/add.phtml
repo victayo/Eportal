@@ -1,0 +1,50 @@
+<?php $users = $this->users; $role = $this->role?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1 class="text-capitalize">
+            Session: <?php echo $session->getValue() ?><br>
+            Term: <?php echo $term->getValue() ?> <br>
+            School: <?php echo $school->getValue()?><br>
+            Class: <?php echo $class->getValue() ?>
+        </h1>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title text-capitalize">Add <?php echo $role ?>(s)</h3>
+        </div>
+        <div class="panel-body">
+            <?php if (count($users)) { ?>
+                <form name="form" method="post">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                    <?php foreach ($users as $user) { ?>
+                            <tr>
+                                <td class="text-left">
+                                    <input type="checkbox" name="user[<?php echo $user['id'] ?>]">
+                                </td>
+                                <td class="text-left"><?php echo $user['fullname'] ?></td>
+                                <td class="text-left"><?php echo $user['username'] ?></td>
+                            </tr>
+                    <?php } ?>
+                    </tbody>
+                    </table>
+                    <input class="btn btn-primary" type="submit" value="Add">
+                </form>
+            <?php }else{ ?>
+                <div class="well text-center text-capitalize">
+                    <p>No unregistered <?php echo $role ?> available!</p>
+                </div>
+            <?php }?>
+        </div>
+    </div>
+</div>

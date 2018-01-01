@@ -1,0 +1,15 @@
+<div class="page-header">
+    <div class="container-fluid"><h1>Upload/Edit Result</h1></div>
+</div>
+<div class='container-fluid'>
+    <hot-table col-headers="true" datarows="data" height="300">
+        <hot-column
+            ng-repeat="column in columns" 
+            data="{{column.data}}" title="column.title" 
+            read-only="column.readOnly" 
+            type="column.type">
+        </hot-column>
+    </hot-table>
+    <br>
+    <button class='btn btn-success' ng-click="submit()">Submit</button>
+</div>

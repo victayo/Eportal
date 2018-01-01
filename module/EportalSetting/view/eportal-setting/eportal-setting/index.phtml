@@ -1,0 +1,42 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/angular/angular-route.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/PropertyService.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/PropertyController.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/property.js', 'text/javascript');
+$form = $this->form;
+$fieldset = $form->getBaseFieldset();
+$form->prepare();
+?>
+
+<div class="page-header">
+    <div class="container-fluid">
+        <h1>Settings</h1>
+    </div>
+</div>
+<div class="container-fluid" ng-app="Eportal.property">
+    <?php if ($this->success === true): ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Changes Saved
+        </div>
+    <?php elseif ($this->success === false) : ?>
+        <div class="alert alert-error alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Warning!</strong> An error occured. Please try again later.
+        </div>
+    <?php endif; ?>
+
+    <?php echo $this->formNg()->openTag($form, null, ['class' => 'form-horizontal']); ?>
+    <?php
+    echo $this->partial('eportal-property/property_form.phtml', ['propertyFieldset' => $fieldset->get('property')]);
+    $submit = $form->get('submit');
+    $submit->setAttributes(['ng-disabled' => 'form.$invalid']);
+    ?>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <?php echo $this->formSubmitNg($submit, 'button', ['class' => 'btn-sm btn-success']); ?>
+        </div>
+    </div>
+    <?php echo $this->formNg()->closeTag(); ?>
+</div>

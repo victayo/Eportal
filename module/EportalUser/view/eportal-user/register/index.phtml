@@ -1,0 +1,51 @@
+<?php
+$this->headScript()->appendFile($this->basePath() . '/Eportal/lib/angular/angular.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/lib/angular/angular-route.min.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/service/PropertyService.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/property/controller/PropertyController.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/user/user.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/user/js/controllers.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/user/js/services.js', 'text/javascript')
+        ->appendFile($this->basePath() . '/Eportal/module/user/js/filters.js', 'text/javascript');
+$form = $this->form;
+$role = $this->role;
+$this->headTitle('Admin - Register '.ucwords($role));
+$form->setAttributes([
+    'role' => 'form',
+    'name' => 'form',
+    'class' => 'form-horizontal',
+])->prepare();
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1 class="text-capitalize"> Register <?php echo $this->escapeHtml($role) ?></h1>
+    </div>
+    <?php if ($this->success === false) { ?>
+        <div class="alert alert-error alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            Registration Failed
+        </div>
+    <?php } else if ($this->success === true) { ?>
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <?php echo $this->escapeHtml($role) ?> successfully added.
+        </div>
+
+    <?php } ?>
+</div>
+<div class="container-fluid" ng-app="Eportal.User" ng-controller="RegisterController">
+    <?php
+    $registerFieldset = $form->getBaseFieldset();
+    echo $this->formNg()->openTag($form, null, array('class' => 'form-horizontal'));
+    echo $this->partial('eportal-user/partial/user.phtml', ['userFieldset' => $registerFieldset->get('user')]);
+    echo $this->partial('eportal-property/property_form.phtml', ['propertyFieldset' => $registerFieldset->get('property')]);
+    $submit = $form->get('submit');
+    $submit->setAttributes(['ng-disabled' => 'form.$invalid']);
+    ?>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <?php echo $this->formSubmitNg($submit, 'button', array('class' => 'btn-sm btn-success')); ?>
+        </div>
+    </div>
+    <?php echo $this->formNg()->closeTag(); ?>
+</div>

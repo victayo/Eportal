@@ -1,0 +1,25 @@
+<?php
+$propertyValue = $this->property_value;
+$property = $this->escapeHtml($propertyValue->getProperty()->getName());
+$title = "Delete {$property}";
+$this->headTitle(ucwords($title));
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a href="<?php echo $this->url("zfcadmin/eportal-{$property}", ['action' => 'index']) ?>" class="btn btn-default" data-toggle="tooltip" title="Cancel" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
+        </div>
+        <h1>Delete <span class="text-capitalize"><?php echo $property ?></span></h1>
+    </div>
+</div>
+
+<p>Are you sure that you want to delete
+    '<?php echo $this->escapeHtml(ucwords($propertyValue->getValue())); ?>'
+</p>
+<form method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo $propertyValue->getId(); ?>" />
+        <input class="btn btn-danger" type="submit" name="del" value="Yes" />
+        <input class="btn btn-primary" type="submit" name="del" value="No" />
+    </div>
+</form>

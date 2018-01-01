@@ -1,0 +1,15 @@
+<phpunit bootstrap="./bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Eportal Property Test Suite">
+            <directory>./EportalTest</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <const name="DB_MYSQL_DSN" value="mysql:host=localhost;dbname=eportal_test" />
+        <const name="DB_MYSQL_USERNAME" value="root" />
+        <const name="DB_MYSQL_PASSWORD" value="" />
+        <const name="DB_MYSQL_PROPERTY_SCHEMA" value="C:/xampp/htdocs/Eportal/module/Property/data/property.schema.mysql.sql" />
+        <const name="DB_MYSQL_PROPERTY_VALUE_SCHEMA" value="C:/xampp/htdocs/Eportal/module/Property/data/property_value.schema.mysql.sql" />
+        <const name="DB_MYSQL_JOINT_PROPERTY_VALUE_SCHEMA" value="C:/xampp/htdocs/Eportal/module/Property/data/joint_property_value.schema.mysql.sql" />
+    </php>
+</phpunit>

@@ -1,0 +1,28 @@
+<?php
+$parents = $this->parent_property_values;
+$parentProperty = $this->parent_property;
+?>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3><i class="fa fa-list"></i><?php echo $parentProperty ?></h3>
+        </div>
+        <?php if (!count($parents)) { ?>
+            <div class="panel-body">
+                <div class="well">
+                    Not Registered Under Any <?php echo $parentProperty; ?>
+                </div>
+            </div>
+        <?php } else { ?>
+            <!--<table class="table table-hover table-bordered">-->
+                <!--<tbody>-->
+            <ul class="list-group">
+                <?php foreach ($parents as $parent) { ?>
+                    <li class="list-group-item text-capitalize"><?php echo $parent->getValue() ?></li>
+                    <?php } ?>
+            </ul>
+            <!--</tbody>-->
+            <!--</table>-->
+        <?php } ?>
+    </div>
+</div>

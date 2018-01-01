@@ -1,0 +1,29 @@
+{
+    "name": "Eportal",
+    "version": "1.0.0",
+    "description": "A web application for managing students in a school",
+    "author": "Okala Victor",
+    "license": "ISC",
+    "repository": {
+        
+    },
+    "devDependencies": {
+        "jasmine": "^2.8.0",
+        "karma": "^1.7.1",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-jasmine": "^1.1.0"
+    },
+    "keywords": [
+        "eportal",
+        "student",
+        "teacher",
+        "school",
+        "education",
+        "session",
+        "term",
+        "class",
+        "school",
+        "department",
+        "result"
+    ]
+}

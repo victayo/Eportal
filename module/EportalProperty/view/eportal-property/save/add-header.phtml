@@ -1,0 +1,19 @@
+<?php
+$title = $this->title;
+$breadcrumbs = $this->breadcrumbs;
+$back_url = $this->back_url;
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a href="<?php echo $back_url?>" class="btn btn-default" data-toggle="tooltip" title="Cancel" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
+        </div>
+        <h1 class="text-capitalize"><?php echo $title ?></h1>
+        <ol class="breadcrumb text-capitalize">
+            <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+                <li><a href="<?php echo $breadcrumb['url'] ?>"><?php echo $breadcrumb['name'] ?></a></li>
+            <?php } ?>
+            <li class="active"><?php echo $title ?></li>
+        </ol>
+    </div>
+</div>

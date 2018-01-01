@@ -1,0 +1,76 @@
+<?php
+$totalStudents = $this->total_students;
+$totalTeachers = $this->total_teachers;
+$schools = $this->schools;
+$classes = $this->classes;
+$departments = $this->departments;
+$subjects = $this->subjects;
+?>
+<div class="page-header">
+    <div class="container-fluid">
+        <h1>Dashboard</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="tile tile-primary">
+                <div class="tile-heading">
+                    Schools
+                </div>
+                <div class="tile-body">
+                    <i class="fa fa-university"></i>
+                    <h2 class="pull-right"><?php echo $schools ?></h2>
+                </div>
+                <div class="tile-footer">
+                    <a href="<?php echo $this->url('zfcadmin/eportal-school') ?>">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="tile tile-primary">
+                <div class="tile-heading">
+                    Classes
+                </div>
+                <div class="tile-body">
+                    <i class="fa fa-newspaper-o"></i>
+                    <h2 class="pull-right"><?php echo $classes ?></h2>
+                </div>
+                <div class="tile-footer">
+                    <a href="<?php echo $this->url('zfcadmin/eportal-class') ?>">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="tile tile-primary">
+                <div class="tile-heading">
+                    Departments
+                </div>
+                <div class="tile-body">
+                    <i class="fa fa-desktop"></i>
+                    <h2 class="pull-right"><?php echo $departments ?></h2>
+                </div>
+                <div class="tile-footer">
+                    <a href="<?php echo $this->url('zfcadmin/eportal-department') ?>">Manage</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="tile tile-primary">
+                <div class="tile-heading">
+                    Subjects
+                </div>
+                <div class="tile-body">
+                    <i class="fa fa-suitcase"></i>
+                    <h2 class="pull-right"><?php echo $subjects ?></h2>
+                </div>
+                <div class="tile-footer">
+                    <a href="<?php echo $this->url('zfcadmin/eportal-subject') ?>">Manage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

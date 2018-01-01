@@ -1,0 +1,7 @@
+school
+department
+class
+subject
+section
+session
+term

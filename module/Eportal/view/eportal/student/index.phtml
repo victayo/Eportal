@@ -1,0 +1,44 @@
+<?php $school = $this->school;
+$class = $this->class;
+$subjects = $this->subjects;
+$session = $this->session;
+$term = $this->term;
+$user = $this->user;
+?>
+<div class="page-header">
+    <h1 class="text-capitalize"><?php echo $this->escapeHtml($user->fullname()) ?><small><?php echo $this->escapeHtml($user->getUsername()) ?></small></h1>
+</div>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table>
+            <tbody>
+                <tr> 
+                    <td>Session:</td>
+                    <td><?php echo $session->getValue() ?></td>
+                </tr>
+                <tr> 
+                    <td>Term:</td>
+                    <td><?php echo $term->getValue() ?></td>
+                </tr>
+                <tr> 
+                    <td>School:</td>
+                    <td><?php echo $school->getValue() ?></td>
+                </tr>
+                <tr> 
+                    <td>Class:</td>
+                    <td><?php echo $class->getValue() ?></td>
+                </tr>
+                <tr> 
+                    <td>Subjects:</td>
+                    <td>
+                        <table>
+                            <?php foreach($subjects as $subject) { ?>
+                            <tr><td><?php echo $subject->getValue() ?></td></tr>
+                            <?php } ?>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

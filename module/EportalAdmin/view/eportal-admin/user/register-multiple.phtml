@@ -1,0 +1,6 @@
+<?php
+$form = $this->form;
+$addUrl = $this->url('zfcadmin/user/student/default', array('action' => 'register'), array('query' => array('type' => 'multiple')));
+$form->setAttribute('action', $addUrl);
+$form->prepare();
+echo $this->form($form);

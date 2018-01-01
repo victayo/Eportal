@@ -1,0 +1,42 @@
+<div ng-show="userEmpty === true"> <h3>No Students Registered</h3></div>
+<div ng-show="userEmpty === false">
+    <div class="col-md-offset-10"><input type="search" ng-model="search" placeholder="search"></div>
+    <table class='table table-condensed table-responsive'>
+        <tr>
+            <th></th>
+            <th>Student</th>
+            <th>Registration Number</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="user in users|filter: search | orderBy:'name'">
+            <td><input type="checkbox" ng-model="user.selected"></td>
+            <td><a ng-href='{{getViewUrl(user)}}'>{{user.fullname| titleCase}}</a></td>
+            <td>{{user.username}}</td>
+            <td><button ng-click="editUser(user)" class="btn btn-sm btn-primary"> Edit</button></td>
+            <td><button class="btn btn-sm btn-success"> Promote</button></td>
+            <td><button class="btn btn-sm btn-success"> Graduate</button></td>
+            <!--<td><button class="btn btn-sm btn-danger" ng-click='removeUser(user)'> Remove </button></td>-->
+        </tr>
+        <tfoot>
+            <tr>
+                <td>
+                    <select class="form-control inline" ng-model="action.selectAction">
+                        <option value="">Select Action</option>
+                        <option value="promote">Promote</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="suspend">Suspend</option>
+                        <option value="expel">Expel</option>
+                        <option value="remove">Remove</option>
+                    </select>
+                    <button class="btn btn-sm btn-primary inline" ng-click="bulkAction()"> Go!</button>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

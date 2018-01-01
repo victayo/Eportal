@@ -1,0 +1,123 @@
+<div ng-controller="PropertyController">
+    <?php
+    if ($propertyFieldset->has('session')):
+        $session = $propertyFieldset->get('session');
+        ?>
+        <div class="form-group">
+            <label for="property_session" class="<?php echo $session->getOption('label_attributes')['class'] ?>"><?php echo $session->getLabel() ?></label>
+            <div class="col-sm-10">
+                <?php
+                $session->setAttributes([
+                    'ng-model' => 'property.session',
+                    'ng-change' => 'sessionChanged()',
+                    'ng-required' => 'true',
+                    'ng-options' => 'session.id as session.value for session in collections.sessions track by session.id'
+                    ]);
+                echo $this->formSelectNg($session, 'select', ['class' => 'form-control']);
+                ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    if ($propertyFieldset->has('term')):
+        $term = $propertyFieldset->get('term');
+        ?>
+        <div class="form-group">
+            <label for="property_term" class="<?php echo $term->getOption('label_attributes')['class'] ?>"><?php echo $term->getLabel() ?></label>
+            <div class="col-sm-10">
+                <?php
+                $term->setAttributes([
+                    'ng-model' => 'property.term',
+                    'ng-required' => 'true',
+                    'ng-change' => 'termChanged()',
+                    'ng-options' => 'term.id as term.value for term in collections.terms track by term.id'
+                    ]);
+                echo $this->formSelectNg($term, 'select', ['class' => 'form-control']);
+                ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    if ($propertyFieldset->has('school')):
+        $school = $propertyFieldset->get('school');
+        ?>
+        <div class="form-group">
+            <label for="property_school" class="<?php echo $school->getOption('label_attributes')['class'] ?>"><?php echo $school->getLabel() ?></label>
+            <div class="col-sm-10">
+                <?php
+                $school->setAttributes([
+                    'ng-model' => 'property.school',
+                    'ng-change' => 'schoolChanged()',
+                    'ng-required' => 'true',
+                    'ng-options' => 'school.id as school.value for school in collections.schools track by school.id'
+                    ]);
+                echo $this->formSelectNg($school, 'select', ['class' => 'form-control']);
+                ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    if ($propertyFieldset->has('class')):
+        $class = $propertyFieldset->get('class');
+        ?>
+        <div class="form-group">
+            <label for="property_class" class="<?php echo $class->getOption('label_attributes')['class'] ?>"> <?php echo $class->getLabel() ?></label>
+            <div class="col-sm-10">
+                <?php
+                $class->setAttributes([
+                    'ng-model' => 'property.class',
+                    'ng-change' => 'classChanged()',
+                    'ng-required' => 'true',
+                    'ng-options' => 'class.id as class.value for class in collections.classes track by class.id'
+                    ]);
+                echo $this->formSelectNg($class, 'select', ['class' => 'form-control']);
+                ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    if ($propertyFieldset->has('department')):
+        $department = $propertyFieldset->get('department');
+        ?>
+        <div class="form-group" ng-show="hasDepartment">
+            <label for="property_department" class="<?php echo $department->getOption('label_attributes')['class'] ?>"> <?php echo $department->getLabel() ?></label>
+            <div class="col-sm-10">
+                <?php
+                $department->setAttributes([
+                    'ng-model' => 'property.department',
+                    'ng-required' => 'hasDepartment',
+                    'ng-change' => 'departmentChanged()',
+                    'ng-disabled' => 'departmentDisabled',
+                    'ng-options' => 'department.id as department.value for department in collections.departments track by department.id'
+                    ]);
+                echo $this->formSelectNg($department, 'select', ['class' => 'form-control']);
+                ?>
+            </div>
+        </div>
+    <?php endif ?>
+
+<?php
+if ($propertyFieldset->has('subject')):
+    $subject = $propertyFieldset->get('subject');
+    ?>
+        <div class="form-group" ng-show="hasSubject">
+            <label for="property_subject" class="<?php echo $subject->getOption('label_attributes')['class'] ?>"><?php echo $subject->getLabel(); ?></label>
+            <div class="col-sm-10">
+                <?php
+                $subject->setAttributes([
+                    'ng-model' => 'property.subject',
+                    'ng-required' => 'hasSubject',
+                    'ng-change' => 'subjectChanged()',
+                    'ng-disabled' => 'subjectDisabled',
+                    'ng-options' => 'subject.id as subject.value for subject in collections.subjects track by subject.id'
+                    ]);
+                echo $this->formSelectNg($subject, 'select', ['class' => 'form-control']);
+                ?>
+            </div>
+        </div>
+<?php endif ?>
+</div>

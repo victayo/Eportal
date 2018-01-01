@@ -1,0 +1,33 @@
+<?php
+
+$this->headScript()->appendFile($this->basePath() . '/js/admin/dist/property-register.js', 'text/javascript');
+$form = $this->form;
+
+$addUrl = $this->url('zfcadmin/user/student/default', array('action' => 'register'), array('query' => array('type' => 'single')));
+
+$form->setAttribute('action', $addUrl);
+$form->prepare();
+echo $this->form()->openTag($form);
+$registerFieldset = $form->get('register');
+$propertyFieldset = $registerFieldset->get('property');
+$userFieldset = $registerFieldset->get('user');
+
+echo $this->formRowTwb($userFieldset->get('first_name'));
+echo $this->formRowTwb($userFieldset->get('last_name'));
+echo $this->formRowTwb($userFieldset->get('middle_name'));
+echo $this->formRowTwb($userFieldset->get('username'));
+echo $this->formRowTwb($userFieldset->get('gender'));
+echo $this->formRowTwb($userFieldset->get('dob'));
+
+echo $this->formRow($propertyFieldset->get('class'));
+if ($propertyFieldset->has('section')) {
+    echo $this->formRow($propertyFieldset->get('section'));
+}
+echo '<div>' . $this->formRow($propertyFieldset->get('department')) . '</div>';
+echo $this->formRowTwb($propertyFieldset->get('session'));
+echo $this->formRowTwb($propertyFieldset->get('term'));
+$csrf = $form->get('csrf');
+$submit = $form->get('submit');
+echo $this->formHidden($csrf);
+echo $this->formSubmitTwb($submit);
+echo $this->form()->closeTag();

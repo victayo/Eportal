@@ -1,0 +1,24 @@
+<div>
+    <h3>Edit</h3>
+</div>
+<?php
+echo $this->headTitle('Edit User')->setSeparator(' - ')->setAutoEscape(false);
+$form = $this->form;
+$form->setAttributes(['role' => 'form'])->prepare();
+$fieldset = $form->getBaseFieldset();
+if ($this->valid === true):
+    ?>
+    <div><h3>Update Successfull</h3></div>
+<?php
+endif;
+if ($this->valid === false):
+    ?>
+    <div><h3>Update Successfull</h3></div>
+    <?php
+endif;
+echo $this->formNg()->openTag($form, null, array('class' => 'form-horizontal'));
+echo $this->partial('eportal-user/partial/user.phtml', ['userFieldset' => $fieldset]);
+    echo $this->formHidden($fieldset->get('id'));
+$submit = $form->get('submit');
+echo $this->formSubmitNg($submit, 'button', array('class' => 'btn-sm btn-success'));
+echo $this->formNg()->closeTag();
