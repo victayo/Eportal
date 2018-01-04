@@ -3,3 +3,6 @@
 /.buildpath
 /.project
 /public/Eportal/nbproject/private/
+/vendor
+/data/uploads
+/config/autoload/local.php
