@@ -1,9 +1,9 @@
 /.settings
 /.buildpath
 /.project
-/nbproject
-/vendor
-/data/uploads
-/config/autoload/local.php
-/public/Eportal/nbproject
-/public/Eportal/node_modules
+nbproject
+vendor
+data/uploads
+config/autoload/local.php
+public/Eportal/nbproject
+public/Eportal/node_modules
