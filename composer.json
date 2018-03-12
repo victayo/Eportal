@@ -1,5 +1,5 @@
 {
-    "name": "zendframework/skeleton-application",
+    "name": "ZfEportal",
     "description": "Skeleton Application for ZF2",
     "require": {
         "php": ">=5.3.3",
